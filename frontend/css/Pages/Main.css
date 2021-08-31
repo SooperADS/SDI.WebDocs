@@ -1,0 +1,41 @@
+@import url("/./css/Base.css");
+@import url("/./css/Tag/Span.css");
+@import url("/./css/Tag/Form.css");
+@import url("/./css/Tag/Shell.css");
+@import url("/./css/Tag/Button.css");
+@import url("/./css/Templates/Menu.css");
+@import url("/./css/Templates/Scroler.css");
+
+#-popup>#-popup__item_login {
+	max-width: 750px;
+}
+
+#-menu button.log-io:hover {
+	background-color: #774d008b !important;
+}
+
+#-menu__right button.project-button:hover {
+	background-color: #007753d9 !important;
+}
+#-menu__right .button-group:hover button.project-button {
+	animation-name: project-button;
+	animation-duration: 0.5s;
+	animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+#-menu__right button.project-button {
+	background-color: #0008773d;
+}
+
+#-menu button.root:hover {
+	background-color: #0000005b !important;
+}
+
+@keyframes project-button {
+	0% {
+		background-color: transparent;
+	}
+	100% {
+		background-color: #0008773d;
+	}
+}

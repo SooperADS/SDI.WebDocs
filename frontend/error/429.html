@@ -1,0 +1,28 @@
+<header>
+	<title>SDI Error: Page NO found</title>
+	<link rel="stylesheet" href="/./css/Pages/Error.css">
+	<link rel="stylesheet" href="/./css/Tag/Button.css">
+</header>
+
+<body>
+	<div>
+		<h1>Ошибка <span>429</span></h1>
+		<h2>Слишком много запросов</h2>
+		<div id="bvars">
+			<button ref="/.">
+				На главную
+			</button>
+			<button ref=" " disabled id="bu">
+				Обновить
+			</button>
+		</div>
+	</div>
+</body>
+
+<script src="/./scripts/js/Tag/Button.js">
+</script>
+<script>
+	setTimeout(() => {
+		document.getElementById("bu").removeAttribute("disabled")
+	}, 5000)
+</script>

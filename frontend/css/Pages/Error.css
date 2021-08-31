@@ -1,0 +1,44 @@
+@import url("/./css/Reset.css");
+@import url("/./css/Base.css");
+
+h1 {
+	font-size: 105px;
+	margin-bottom: 10px;
+}
+
+h2 {
+	color: #464646;
+	font-size: 25px;
+	margin-bottom: 30px;
+
+	user-select: none;
+}
+
+span {
+	color: #ff8989;
+}
+
+button {
+	display: block;
+	font-size: 28px !important;
+	margin: 0 auto;
+}
+
+#bvars {
+	display: flex;
+
+	margin: 0 auto;
+
+	width: 70%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+body {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+html {
+	display: table;
+}

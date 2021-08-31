@@ -1,0 +1,90 @@
+div.project section,
+.content section {
+	width: 100%;
+}
+
+.content div.project,
+.content .content {
+	width: 100% !important;
+	background-color: #7c7c7c11;
+
+	margin-bottom: 2.5vh !important;
+	margin-top: 3.5vh;
+}
+.content div.project::after,
+.content .content::after {
+	--color: #121212;
+}
+.content div.project::before,
+.content .content::before {
+	--color: #292929;
+}
+
+div.project,
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	position: relative;
+
+	background-color: #18181859;
+	margin-bottom: 5vh !important;
+	margin-top: 5vh;
+
+	width: 70%;
+	overflow: hidden;
+
+	padding: 10px 35px;
+}
+
+div.project::after,
+div.project::before,
+.content::after,
+.content::before {
+	position: absolute;
+	content: "";
+
+	right: 0;
+	top: 0;
+
+	width: 0; 
+	height: 0;
+
+	--size: 50px;
+	display: none;
+}
+
+div.project[page]::after,
+div.project[page]::before,
+.content[page]::after,
+.content[page]::before {
+	display: block;
+}
+
+div.project::after,
+.content::after {
+	--color: #0F0F0F;
+	border-top: var(--size) solid var(--color);
+	border-left: var(--size) solid transparent;
+}
+div.project::before,
+.content::before {
+	--color: #1a1a1a;
+	border-bottom: var(--size) solid var(--color);
+	border-right: var(--size) solid transparent;
+
+	box-shadow: 2.5px 2.5px 6px #00000099;
+}
+
+.content button {
+	margin-bottom: 5px;
+	background-color: #00000020;
+}
+div.project button {
+	margin-bottom: 5px;
+	background-color: transparent;
+}

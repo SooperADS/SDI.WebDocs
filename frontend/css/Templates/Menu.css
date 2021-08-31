@@ -1,0 +1,71 @@
+#-menu__content {
+	position: fixed;
+	background-color: #181818;
+	justify-content: space-between;
+
+	width: inherit;
+	height: inherit;
+
+	display: flex;
+	padding: 0 5%;
+
+	z-index: 100;
+}
+#-menu {
+	width: 100vw;
+	height: 45px;
+
+	display: block;
+	position: static;
+
+	z-index: 10;
+}
+
+#-menu__right>.button-group>button[group]::after {
+	right: 10px;
+}
+#-menu__right>.button-group>button[group] {
+	height: 45px;
+}
+
+#-menu__right {
+	display: flex;
+	justify-content: center;
+}
+
+#-menu__right>.button-group {
+	height: max-content;
+	z-index: 1;
+}
+#-menu__right .button-group>.button-group,
+#-menu__right .button-group>.button-group button,
+#-menu__right>.button-group>button:not([group]) {
+	font-size: 16px !important;
+	height: 35px !important;
+	z-index: 10 !important;
+}
+
+#-menu__content button,
+#-menu__content * .button-group button,
+#-menu__content * .button-group .button-group {
+	height: 100%;
+	font-size: 21px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#-menu__content>div>button.root>img {
+	width: 32px;
+	height: 32px;
+
+	vertical-align: middle;
+	pointer-events: none;
+
+	margin-right: 15px;
+	padding-bottom: 2px;
+}
+
+#-menu__content button,
+#-menu__content .button-group {
+	width: 150px;
+}

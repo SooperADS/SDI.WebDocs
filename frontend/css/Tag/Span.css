@@ -1,0 +1,50 @@
+b {
+	font-weight: bold;
+}
+.mcode {
+	display: inline-block;
+	
+	background-color: #00000046;
+	font-size: 75%;
+	padding: 0 0.75ch;
+
+	vertical-align: middle;
+
+	margin: 0;
+}
+
+h6, h5, h4,
+h3, h2, h1 {
+	margin-top: 15px;
+	align-self: stretch;
+	letter-spacing: 0.15ch;
+}
+
+section {
+	margin-top: 15px;
+	text-align: left;
+}
+
+p {
+	letter-spacing: 0.10ch;
+	font-size: 18px;
+	font-weight: 100;
+	text-align: left;
+
+	line-height: 22.5px;
+	margin-top: 7.5px;
+	margin-bottom: 10px;
+}
+
+a {
+	color: #fff492;
+
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+}
+a:hover {
+	color: #d6c100;
+}
+a:active {
+	color: #a6ff7d;	
+}

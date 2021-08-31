@@ -1,0 +1,172 @@
+@import url("/./fonts/sdi-icon/style.css");
+
+button, .button-group {
+	display: block;
+	min-width: 115px;
+
+	background-color: transparent;
+	color: #fff;
+
+	border-style: solid;
+	border-color: transparent;
+	border-color: #6f77003b;
+	border-width: 0px;
+
+	padding: 8px 16px;
+	font-size: 16px;
+	user-select: none;
+
+	position: relative;
+
+	transition-duration: 0.25s;
+	transition-timing-function: linear;
+
+	font-family: "Consolas", monospace;
+	font-weight: 800;
+}
+
+.button-group {
+	padding: 0;
+}
+.button-group[sub]>.sub {
+	display: block;
+}
+
+.button-group:not([disabled]):hover,
+:not(.button-group[disabled])>button:not(:disabled):hover,
+:not(.button-group[disabled])>button:not([disabled]):hover,
+button:hover:focus[can-focus] {
+	background-color: #0877008b;
+	
+	transition-duration: 0.25s;
+	transition-timing-function: linear;
+}
+button:focus[can-focus] {
+	border-width: 5px;
+	padding: 3px 11px;
+
+	transition-duration: 0.25s;
+	transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.button-group[disabled]>button,
+button:disabled,
+button[disabled] {
+	background-color: #7070706b;
+	cursor: no-drop;
+}
+
+[use-lock] .button-group[disabled]::after,
+[use-lock] .button-group:disabled::after,
+[use-lock] button[disabled]::after,
+[use-lock] button:disabled::after {
+	content: "\e005";
+	position: absolute;
+	
+	display: block;
+	top: calc(50% - 8px);
+	right: 5px;
+
+	font-family: 'icons';
+}
+
+.button-group>button,
+.button-group>.button-group,
+.button-group[sub]>.sub {
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+.button-group>button[group],
+.button-group:not([disabled]):hover>button,
+.button-group:not([disabled]):hover>.button-group,
+.button-group[sub]:not([disabled]):hover>.sub,
+.button-group:not([sub]):not([disabled])[fixed]>button,
+.button-group:not([sub]):not([disabled])[fixed]>.button-group {
+	visibility: visible;
+	opacity: 1;
+}
+
+.button-group:not([sub]):not([disabled])[no-fixed],
+.button-group:not([sub]):not([disabled])[no-fixed]>button[group],
+.button-group:not([sub]):not([disabled])[no-fixed]>.button-group {
+	cursor: default;
+}
+
+.button-group>button[group] {
+	position: relative;
+}
+.button-group>button[group]::after {
+	content: none;
+	position: absolute;
+	
+	display: block;
+	top: calc(50% - 8px);
+
+	font-family: 'icons';
+}
+.button-group:not([reverse-arrow])>button[group]::after {
+	right: 7px;
+}
+.button-group[reverse-arrow]>button[group]::after {
+	left: 7px;
+}
+
+.button-group[sub][reverse-arrow]>button[group]::after,
+.button-group[sub]:not([reverse-arrow])>button[group]:hover:after {
+	content: "\e000"; /*LEFT ARROW*/
+}
+.button-group[sub][reverse-arrow]>button[group]:hover:after,
+.button-group[sub]:not([reverse-arrow])>button[group]::after {
+	content: "\e001"; /*RIGHT ARROW*/
+}
+
+.button-group:not([sub])>button[group]::after {
+	content: "\e003";
+}
+.button-group:not([sub]):hover>button[group]::after {
+	content: "\e002";
+}
+.button-group:not([sub])[fixed]:not([no-fixed-ch])>button[group]::after {
+	content: "\e006";
+	right: 5px;
+}
+
+.button-group[sub]>.sub>.button-group,
+.button-group>.button-group[sub] {
+	position: relative;
+}
+
+.button-group[sub]>sub>.button-group[sub]>.sub,
+.button-group>.button-group[sub]>.sub {
+	position: absolute;
+	width: 100%;
+
+	background-color: inherit;
+	
+	transition-duration: 0.25s;
+	transition-timing-function: linear;
+
+	top: 0%;
+}
+
+.button-group>sub>.button-group,
+.button-group>sub>button {
+	width: 100%;
+}
+
+.button-group[sub]>button {
+	cursor: default !important;
+}
+
+.button-group[sub]>.sub>.button-group[sub]>.sub[direct="right"],
+.button-group>.button-group[sub]>.sub[direct="right"],
+.button-group[sub]>.sub>.button-group[sub]>.sub,
+.button-group>.button-group[sub]>.sub {
+	left: 100%;
+}
+
+.button-group[sub]>.sub>.button-group[sub]>.sub[direct="left"],
+.button-group>.button-group[sub]>.sub[direct="left"] {
+	left: -100%;
+}

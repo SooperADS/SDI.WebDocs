@@ -1,0 +1,142 @@
+#-popup {
+	position: fixed;
+	font-family: "Consolas", monospace;
+
+	background-color: #000000ad;
+
+	width: 100vw;
+	height: 100vh;
+
+	top: 0;
+	left: 0;
+	
+	z-index: 500;
+
+	visibility: hidden;
+	opacity: 0;
+
+	transition-property: opacity, visibility;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}
+#-popup>div {
+	position: fixed;
+
+	display: block;
+	background-color: #0f0f0f;
+	font-family: "Consolas", monospace;
+
+	border-style: solid;
+	border-width: 5px;
+	border-color: #ffffff49;
+
+	max-width: 80vw;
+
+	width: 60vw;
+	min-width: 30vw;
+
+	max-height: 80vh;
+	padding: 20px 30px;
+
+	top: -100vh;
+	left: 50vw;
+
+	transform: translate(-50%, -50%);
+
+	z-index: 10;
+	overflow-y: auto;
+
+	transition-property: top;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}
+
+#-popup>div>div.project,
+#-popup>div>div.content {
+	width: 100%;
+	height: 100%;
+
+	margin: 0 !important;
+
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+#-popup>div p {
+	text-align: left;
+}
+
+*:not(button)[popup] {
+	cursor: pointer !important;
+	color: #92ffcc;
+
+	transition-property: color;
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+}
+*:not(button)[popup]:hover {
+	color: #50ff6d;
+}
+*:not(button)[popup]:active {
+	color: #50aaff;
+}
+
+img[img][popup] {
+	cursor: zoom-in !important;
+	cursor: -moz-zoom-in !important;
+	cursor: -webkit-zoom-in !important;
+}
+#-popup>div[img] {
+	cursor: zoom-out !important;
+	cursor: -moz-zoom-out !important;
+	cursor: -webkit-zoom-out !important;
+}
+
+#-popup__close {
+	position: fixed;
+
+	--size: 45px;
+	min-width: var(--size);
+	min-height: var(--size);
+
+	width: var(--size);
+	height: var(--size);
+
+	padding-left: 10px;
+	padding-right: 10px;
+
+	left: 0;
+	top: -100%;
+	font-size: 18px;
+
+	transition-property: top, background-color !important;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}
+#-popup__close:hover {
+	background-color: #ff00006e !important;
+}
+
+#-popup.open {
+	visibility: visible;
+	opacity: 1;
+
+	transition-property: opacity, visibility;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}
+#-popup>div.open {
+	top: 50vh;
+
+	transition-property: top;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}
+#-popup.open #-popup__close {
+	top: 0;
+
+	transition-property: top;
+	transition-timing-function: linear;
+	transition-duration: 0.75s;
+}

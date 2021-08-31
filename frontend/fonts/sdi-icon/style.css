@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'icons';
+	src:url('fonts/icons.eot?z12qtj');
+	src:url('fonts/icons.eot?z12qtj#iefix') format('embedded-opentype'),
+		url('fonts/icons.ttf?z12qtj') format('truetype'),
+		url('fonts/icons.woff?z12qtj') format('woff'),
+		url('fonts/icons.svg?z12qtj#icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[font-support="sdi-icon"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icons' !important;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

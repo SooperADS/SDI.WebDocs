@@ -1,0 +1,296 @@
+<head>
+	<title>SDI MainPage</title>
+	<link id="page-icon" rel="icon" href="/./img/icons/logo.png" />
+
+	<link rel="stylesheet" href="/./css/Pages/Main.css">
+	<link rel="stylesheet" href="/./css/Templates/Project.css">
+	<link rel="stylesheet" href="/./css/Templates/Popup.css">
+</head>
+
+<body>
+	<!--Менюшка сверху
+		div#-menu - отступ-->
+	<div id="-menu">
+		<nav font-support="sdi-icon" id="-menu__content">
+			<div id="-menu__left">
+				<button class="root" ref="/./">
+					<img src="/./img/icons/logo.png"> SDI
+				</button>
+			</div>
+			<div id="-menu__right" use-lock>
+				<div class="button-group" hidden no-fixed id="-menu__accaunt">
+					<button group>
+						Акаунт
+					</button>
+					<button hidden ref="/./server/profile.php">
+						Профель
+					</button>
+					<button hidden ref="/./server/contribution.php" id="-menu__my">
+						Участие
+					</button>
+					<button hidden class="log-io" ref="/./server/logout.php">
+						Выйти
+					</button>
+				</div>
+				<button class="log-io" popup="login" id="-menu__login">
+					Войти
+				</button>
+				<div class="button-group" id="-menu__projects" no-fixed>
+					<button group>
+						Проекты
+					</button>
+					<button ref="/./server/project.php">
+						Все
+					</button>
+					<div class="button-group" sub reverse-arrow>
+						<button group title="Документация">
+							Docs
+						</button>
+						<div class="sub" direct="left" id="-menu__docs">
+							<button ref="/./server/docs.php">
+								Все
+							</button>
+						</div>
+					</div>
+					<div class="button-group" sub reverse-arrow>
+						<button group>
+							Задачи
+						</button>
+						<div class="sub" direct="left" id="-menu__task">
+							<button ref="/./server/tasks.php">
+								Все
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="button-group" hidden no-fixed id="-menu__acp">
+					<button group title="Admin Control Panal">
+						ACP
+					</button>
+					<button ref="/./server/acp/reg.php" id="-menu__registr">
+						Регистрация
+					</button>
+					<button ref="/./server/acp/projects.php" id="-menu__acp-projects">
+						Проекты
+					</button>
+					<button ref="/./server/acp/tesks.php" id="-menu__acp-task">
+						Задачи
+					</button>
+					<button ref="/./server/acp/users.php" id="-menu__acp-accounts">
+						Аккаунты
+					</button>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<div font-support="sdi-icon" id="-scroler" page>
+		<p class="text">&#57346;</p>
+	</div>
+
+	<div id="-content">
+		<div class="content" page>
+			<h3>Привет!</h3>
+			<section>
+				<p>
+					Мы <b>SDI</b> (<b>S</b>oftwere <b>D</b>evelopmenet <b>I</b>ntertamate) - группа
+					энтузиастов
+					разработчиков видео-игр. Это наш веб-сайт на котором
+					публекуется информация о текущих задачах группы, проектах группы и прочие
+				</p>
+
+				<div class="content" page>
+					<h4>Для участников</h4>
+					<section>
+						<p>
+							Этот веб-сайт предназначен для работы. Здеь вы можите просмотреть актуальную инфармацию о
+							проектах и текущих задачах <b>группы</b>. Если вы хотите участвовать в нашей <b>группе</b>
+							то напишите мне на почту <span class="mcode">sd401gd@gmail.com</span> немного о том чем вы
+							занимаетесь, как вас зовут и как с вами можно связаться. В теме сообщения укажите <span
+								class="mcode">Участие в SDI</span>.
+						</p>
+						<p>
+							Если вы участник, но потеряли регистрационные данные (login, пароль, времменую ссылку) на
+							сайте то напишите мне на эл. почту <span class="mcode">sd401gd@gmail.com</span>
+							или <a href="https://t.me/SDI_Cpp_MainDeveloper" target="_blanck">в telegram</a>
+						</p>
+					</section>
+				</div>
+			</section>
+		</div>
+
+		<div class="content" page>
+			<h3>Проекты</h3>
+			<section>
+				<p>
+					Ниже приведё список всех проектов <b>группы</b>
+				</p>
+
+				<div id="-project-list" capacity="3"></div>
+				<button id="-projrct-more">
+					Больше
+				</button>
+			</section>
+		</div>
+	</div>
+
+	<div id="-popup">
+		<button id="-popup__close" title="Нажмите чтобы закрыть">
+			X
+		</button>
+		<div id="-popup__item_login" open>
+			<div class="content" page>
+				<h3>Войти</h3>
+				<p>
+					Это форма входа предназначина <b>ТОЛЬКО</b> для участников группы. Если Вы участник и у вас
+					возникла
+					проблемма при входе то напишите мне
+				</p>
+				<form action=" " enctype="multipart/form-data" novalidate name="login" method="post">
+					<input type="text" name="user-name" autocomplete autofocus maxlength="30"
+						pattern="^[A-Za-z0-9-_]{5,30}$" placeholder="Введите имя участника" required tabindex="0" />
+					<input checked type="checkbox" name="no-save" id="checkbox__no-my-pc" required tabindex="1" />
+					<label for="checkbox__no-my-pc">
+						Чужой компьютер
+					</label>
+					<input type="text" name="password" autocomplete maxlength="30" pattern="^[A-Za-z0-9]{5,30}$"
+						placeholder="Введите пароль" required tabindex="2" />
+					<input password-name="password" type="checkbox" id="checkbox__show-password" />
+					<label for="checkbox__show-password">
+						Показать пароль
+					</label>
+
+					<div class="button-list">
+						<button type="reset">Сбросить</button>
+						<button type="submit">Войти</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script src="scripts/js/ServerAPI.js">
+</script>
+
+<script>
+	/*Server inside*/
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs",
+		"Icons/logo.png",
+		"SooperADS/SDI.WebDocs",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 2",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 3",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 4",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 5",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 6",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 7",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 8",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+	Server.addProject(
+		"sdi-webdocs",
+		"WebDocs 9",
+		"Icons/logo.png",
+		"SooperADS/SDI.GameEngine",
+		`Это официальный сайт <b>SDI</b>. Здесь есть практически
+		 вся документация по всем нашим проектам. Также тут присутствует 
+		 список текущиз задач группы и многое другое, созданное для 
+		 упрощения и оптимизвции работы участников и группы`
+	)
+
+</script>
+
+<script src="/./scripts/js/Scrol.js">
+</script>
+<script src="/./scripts/js/Entity/Project.js">
+</script>
+<script src="/./scripts/js/Tag/Button.js">
+</script>
+<script src="/./scripts/js/Tag/Scroler.js">
+</script>
+<script src="/./scripts/js/Tag/Popup.js">
+</script>
+<script src="/./scripts/js/Tag/Form.js">
+</script>
+
+<script>
+	let evryonce = document.querySelectorAll(
+		"*:not(body):not(html):not([hidden])"
+	)
+	evryonce.forEach(e => {
+		e.setAttribute("hidden", "")
+	})
+
+	setTimeout(() => {
+		evryonce.forEach(e => {
+			e.removeAttribute("hidden")
+		})
+	}, 1)
+</script>

@@ -1,0 +1,86 @@
+#-scroler {
+	position: fixed;
+	min-width: 64px;
+	min-height: 64px;
+	--color: #121212;
+
+	background-color: var(--color);
+	z-index: 200;
+
+	left: 30px;
+	bottom: 30px;
+
+	display: table;
+	overflow: hidden;
+	font-size: 56px;
+
+	cursor: pointer;
+
+	transition-property: background-color, bottom;
+	transition-duration: 0.35s, 0.5s;
+	transition-timing-function: linear;
+
+	transition-delay: 0ms;
+}
+#-scroler:hover {
+	--color: #0f4200;
+}
+#-scroler:hover::before {
+	--color: #2f5724;
+}
+
+#-scroler>p.text {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	margin: auto;
+
+	color: #c7c7c7;
+	user-select: none;
+
+	font-size: 56px;
+}
+
+#-scroler::after,
+#-scroler::before {
+	position: absolute;
+	content: "";
+
+	right: 0;
+	top: 0;
+
+	width: 0; 
+	height: 0;
+
+	z-index: 10;
+
+	--size: 25px;
+	display: none;
+}
+
+#-scroler[page]::after,
+#-scroler[page]::before {
+	display: block;
+}
+
+#-scroler::after {
+	border-top: var(--size) solid #0F0F0F;
+	border-left: var(--size) solid transparent;
+}
+#-scroler::before {
+	--color: #1a1a1a;
+	border-bottom: var(--size) solid var(--color);
+	border-right: var(--size) solid transparent;
+
+	box-shadow: 2.5px 2.5px 4.5px #00000099;
+	
+	transition-duration: 0.35s;
+	transition-timing-function: linear;
+}
+
+#-scroler.hidden {
+	bottom: -25%;
+
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+}

@@ -1,0 +1,102 @@
+@import url("./Reset.css");
+
+.tag-h1, h1 {
+	text-align: center;
+	font-size: 72px;
+}
+.tag-h2, h2 {
+	text-align: center;
+	font-size: 56px;
+}
+.tag-h3, h3 {
+	text-align: center;
+	font-size: 48px;
+}
+.tag-h4, h4 {
+	text-align: center;
+	font-size: 36px;
+}
+.tag-h5, h5 {
+	text-align: center;
+	font-size: 28px;
+}
+.tag-h6, h6 {
+	text-align: center;
+	font-size: 21px;
+}
+
+.left-text {
+	text-align: left;
+}
+.reght-text {
+	text-align: right;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: visible;
+
+	scroll-behavior: smooth;
+}
+body {
+	background-color: #0f0f0f;
+	font-family: "Consolas", monospace;
+	overflow: auto;
+	
+	text-align: center;
+	font-weight: 500;
+	color: white;
+
+	height: max-content;
+	overflow: visible;
+}
+
+/*CONTENT*/
+#-content {
+	width: 100vw;
+	display: block;
+	padding-bottom: 5px;
+}
+
+/*ONLY WEBKIT*/
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #ffffff07;
+}
+::-webkit-scrollbar-thumb {
+	background: #ffffff11;
+    border-radius: 2px;
+}
+::-webkit-scrollbar-button {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}      
+
+::-webkit-scrollbar-thumb:hover {
+	background: #ffffff2d;
+}
+::-webkit-scrollbar-track:hover {
+	background-color: #00000013;
+}
+
+/*Selection customize*/
+input[type="text"]::selection,
+input[type="password"]::selection,
+input[type="number"]::selection,
+input[type="search"]::selection,
+input[type="tel"]::selection,
+input[type="url"]::selection,
+input[type="email"]::selection,
+code at::selection,
+code at *::selection {
+	background-color: #176100;
+}
+
+*::selection {
+	background-color: #614a00;
+}

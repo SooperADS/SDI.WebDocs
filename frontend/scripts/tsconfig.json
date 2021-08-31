@@ -1,0 +1,38 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"module": "es6",
+		"outDir": "./js",
+		"target": "es6",
+		"alwaysStrict": true,
+		"noEmitOnError": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": true,
+		"noImplicitUseStrict": false,
+		"pretty": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"watch": true,
+		//
+		/*"declaration": true,
+		"declarationDir": "./include",*/
+		//
+		"allowUnreachableCode": true,
+		"charset": "utf8",
+		"emitBOM": true,
+		"listFiles": true,
+		"listEmittedFiles": true,
+		"newLine": "CRLF",
+		"noImplicitReturns": true,
+		"traceResolution": true
+	},
+	"files": [
+		"./ts/Scrol.ts",
+		"./ts/Tag/Form.ts",
+		"./ts/ServerAPI.ts",
+		"./ts/Tag/Popup.ts",
+		"./ts/Tag/Button.ts",
+		"./ts/Tag/Scroler.ts",
+		"./ts/Entity/Project.ts",
+	]
+}
