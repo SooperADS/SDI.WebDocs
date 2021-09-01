@@ -9,7 +9,7 @@ abstract class AdminBase
 
     /**
      * Метод, который проверяет пользователя на то, является ли он администратором
-     * @return boolean
+     * @return array <p>{ 'user' => $user, 'accessLevel' => $accessLevel }</p>
      */
     public static function checkAdmin()
     {
@@ -18,10 +18,11 @@ abstract class AdminBase
 
         // Получаем информацию о текущем пользователе
         $user = User::getUserById($userId);
+        $accessLevel = User::getUserAccessLevel($user['role']);
 
         // Если роль текущего пользователя "admin", пускаем его в админпанель
-        if ($user['role'] == 'admin') {
-            return true;
+        if ($accessLevel) {
+            return array('user' => $user, 'accessLevel' => $accessLevel);
         }
 
         // Иначе завершаем работу с сообщением об закрытом доступе

@@ -31,12 +31,16 @@ class AdminCategoryController extends AdminBase
         // Проверка доступа
         self::checkAdmin();
 
+        // Получение списка категорий для установки родительской категории
+        $categoriesList = Category::getCategoriesListAdmin();
+
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $name = $_POST['name'];
             $sortOrder = $_POST['sort_order'];
+            $parent = $_POST['parent'];
             $status = $_POST['status'];
 
             // Флаг ошибок в форме
@@ -51,7 +55,7 @@ class AdminCategoryController extends AdminBase
             if ($errors == false) {
                 // Если ошибок нет
                 // Добавляем новую категорию
-                Category::createCategory($name, $sortOrder, $status);
+                Category::createCategory($name, $sortOrder, $parent, $status);
 
                 // Перенаправляем пользователя на страницу управлениями категориями
                 header("Location: /admin/category");
@@ -70,6 +74,9 @@ class AdminCategoryController extends AdminBase
         // Проверка доступа
         self::checkAdmin();
 
+        // Получение списка категорий для установки родительской категории
+        $categoriesList = Category::getCategoriesListAdmin();
+        
         // Получаем данные о конкретной категории
         $category = Category::getCategoryById($id);
 
@@ -82,7 +89,7 @@ class AdminCategoryController extends AdminBase
             $status = $_POST['status'];
 
             // Сохраняем изменения
-            Category::updateCategoryById($id, $name, $sortOrder, $status);
+            Category::updateCategoryById($id, $name, $sortOrder, $parent, $status);
 
             // Перенаправляем пользователя на страницу управлениями категориями
             header("Location: /admin/category");

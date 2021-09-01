@@ -28,6 +28,21 @@
 
                         <p>Порядковый номер</p>
                         <input type="text" name="sort_order" placeholder="" value="<?php echo $category['sort_order']; ?>">
+
+                        <p>Родительская категория</p>
+                        <select name="parent">
+                            <?php if (is_array($categoriesList)): ?>
+                                <option value="-1">[В корневом разделе]</option>
+                                <?php foreach ($categoriesList as $category): ?>
+                                    <?php if ($category['id'] != $id): ?>
+                                    <option value="<?php echo $category['id']; ?>" 
+                                        >
+                                        <?php echo $category['name']; ?>
+                                    </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
                         
                         <p>Статус</p>
                         <select name="status">

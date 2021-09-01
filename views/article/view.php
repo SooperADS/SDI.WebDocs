@@ -27,17 +27,15 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="<?php echo Article::getImage($articleId['id']); ?>" alt="" />
+                                <img src="<?php echo Article::getImage($article['id']); ?>" alt="" />
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
 
-                                <?php if ($articleId['is_hot']): ?>
-                                    <img src="/template/images/product-details/hot.jpg" class="newarrival" alt="" />
-                                <?php endif; ?>
+                                
 
-                                <h2><?php echo $articleId['name']; ?></h2>
+                                <h2><?php echo $article['title']; ?></h2>
                             </div><!--/product-information-->
                         </div>
                     </div>
@@ -45,7 +43,7 @@
                         <div class="col-sm-12">
                             <br/>
                             <h5>Текст</h5>
-                            <?php echo $articleId['description']; ?>
+                            <?php echo $article['description']; ?>
                         </div>
                     </div>
                 </div><!--/product-details-->

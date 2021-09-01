@@ -26,21 +26,19 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Последние записи</h2>
 
-                    <?php foreach ($latestProducts as $product): ?>
+                    <?php foreach ($latestArticles as $article): ?>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?php echo Article::getImage($product['id']); ?>" alt="" />
+                                        <img src="<?php echo Article::getImage($article['id']); ?>" alt="" />
                                         <p>
-                                            <a href="/article/<?php echo $product['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                            <a href="/article/<?php echo $article['id']; ?>">
+                                                <?php echo $article['title']; ?>
                                             </a>
                                         </p>
                                     </div>
-                                    <?php if ($product['is_hot']): ?>
-                                        <img src="/template/images/home/new.png" class="new" alt="" />
-                                    <?php endif; ?>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -61,7 +59,7 @@
                          data-cycle-prev="#prev"
                          data-cycle-next="#next"
                          >                        
-                             <?php foreach ($sliderProducts as $sliderItem): ?>
+                             <?php foreach ($sliderArticles as $sliderItem): ?>
                             <div class="item">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">

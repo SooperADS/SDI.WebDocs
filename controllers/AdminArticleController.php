@@ -16,7 +16,7 @@ class AdminArticleController extends AdminBase
 		self::checkAdmin();
 
 		// Получаем список статей
-		$ArticlesList = Article::getArticlesList();
+		$articlesList = Article::getArticlesList();
 
 		// Подключаем вид
 		require_once(ROOT . '/views/admin_article/index.php');
@@ -29,30 +29,27 @@ class AdminArticleController extends AdminBase
 	public function actionCreate()
 	{
 		// Проверка доступа
-		self::checkAdmin();
+		$userInfo = self::checkAdmin();
+
+		
 
 		// Получаем список категорий для выпадающего списка
 		$categoriesList = Category::getCategoriesListAdmin();
 
 		// Обработка формы
 		if (isset($_POST['submit'])) {
+
 			// Если форма отправлена
 			// Получаем данные из формы
-			/*
-				OPTIONS:
-				{
-					id
-					title
-					author
-					post_date = R::isoDateTime();
-					content
-					category_id
-					description
-					status //[?]
-					rights
-					tags //Теги для поиска статьи (макс 7 шт)
-				}
-			*/
+			$options['title'] = $_POST['title'];
+			$options['author'] = $userInfo['user']['name'];
+			$options['post_date'] = R::isoDateTime();
+			$options['content'] = $_POST['content'];
+			$options['category_id'] = $_POST['category_id'];
+			$options['description'] = $_POST['description'];
+			$options['status'] = $_POST['status'];
+			$options['level'] = $_POST['level'];
+			$options['tags'] = $_POST['tags'];
 
 			// Флаг ошибок в форме
 			$errors = false;
@@ -60,6 +57,18 @@ class AdminArticleController extends AdminBase
 			// При необходимости можно валидировать значения нужным образом
 			if (!isset($options['title']) || empty($options['title'])) {
 				$errors[] = 'Заполните поле "Название"';
+			}
+
+			if (!isset($options['level']) || empty($options['level'])) {
+				$errors[] = 'Заполните поле "Уровень доступа"';
+			}
+
+			if ($options['level'] > $userInfo['accessLevel'] || $options['level'] < 1) {
+				$errors[] = 'Уровень доступа выходит за допустимые пределы(1 до '.$userInfo['accessLevel'];
+			}
+
+			if (!isset($options['status']) || empty($options['status'])) {
+				$errors[] = 'Заполните поле "Статус"';
 			}
 
 			if ($errors == false) {
@@ -92,7 +101,7 @@ class AdminArticleController extends AdminBase
 	public function actionUpdate($id)
 	{
 		// Проверка доступа
-		self::checkAdmin();
+		$userInfo = self::checkAdmin();
 
 		// Получаем список категорий для выпадающего списка
 		$categoriesList = Category::getCategoriesListAdmin();
@@ -104,30 +113,49 @@ class AdminArticleController extends AdminBase
 		if (isset($_POST['submit'])) {
 			// Если форма отправлена
 			// Получаем данные из формы редактирования. При необходимости можно валидировать значения
-			$options['name'] = $_POST['name'];
-			$options['code'] = $_POST['code'];
-			$options['price'] = $_POST['price'];
+			$options['title'] = $_POST['title'];
+			$options['author'] = $userInfo['user']['name'];
+			$options['post_date'] = R::isoDateTime();
+			$options['content'] = $_POST['content'];
 			$options['category_id'] = $_POST['category_id'];
-			$options['brand'] = $_POST['brand'];
-			$options['availability'] = $_POST['availability'];
 			$options['description'] = $_POST['description'];
-			$options['is_new'] = $_POST['is_new'];
-			$options['is_recommended'] = $_POST['is_recommended'];
 			$options['status'] = $_POST['status'];
+			$options['level'] = $_POST['level'];
+			$options['tags'] = $_POST['tags'];
 
-			// Сохраняем изменения
-			if (Article::updateArticleById($id, $options)) {
+			// Флаг ошибок в форме
+			$errors = false;
 
-
-				// Если запись сохранена
-				// Проверим, загружалось ли через форму изображение
-				if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-
-					// Если загружалось, переместим его в нужную папке, дадим новое имя
-				   move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/articles/{$id}.jpg");
-				}
+			if (!isset($options['title']) || empty($options['title'])) {
+				$errors[] = 'Заполните поле "Название"';
 			}
 
+			if (!isset($options['level']) || empty($options['level'])) {
+				$errors[] = 'Заполните поле "Уровень доступа"';
+			}
+
+			if ($options['level'] > $accessLevel || $options['level'] < 1) {
+				$errors[] = 'Уровень доступа выходит за допустимые пределы(1 до '.$accessLevel;
+			}
+
+			if (!isset($options['status']) || empty($options['status'])) {
+				$errors[] = 'Заполните поле "Статус"';
+			}
+
+			if ($errors == false) {
+				// Если ошибок нет
+				// Сохраняем изменения
+				if (Article::updateArticleById($id, $options)) {
+
+					// Если запись сохранена
+					// Проверим, загружалось ли через форму изображение
+					if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+
+						// Если загружалось, переместим его в нужную папке, дадим новое имя
+					   move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/articles/{$id}.jpg");
+					}
+				}
+			}
 			// Перенаправляем пользователя на страницу управлениями статьями
 			header("Location: /admin/article");
 		}

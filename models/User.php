@@ -186,4 +186,41 @@ class User
         return $user;
     }
 
+    /**
+     * Возвращает уровень доступа пользователя с указанным id
+     * @param integer $id <p>id пользователя</p>
+     * @return int <p>Массив с информацией о пользователе</p>
+     */
+    public static function getUserAccessLevel($role)
+    {
+        switch ($role) {
+            case 'root':
+                return 10;
+            case 'developer':
+                return 9;
+            case 'admin':
+                return 8;
+            case 'sys.admin':
+            case 'tech.admin':
+                return 7;
+            case 'creator':
+                return 6;
+            case 'moderator':
+                return 5;
+            case 'enigma':            
+            case 'phoenix':
+            case 'helper':
+            case 'deluxe':
+            case 'creative':
+                return 4;
+            case 'premium':
+                return 3;
+            case 'vip':
+                return 2;
+            case 'fly':
+                return 1;
+            default:
+                return false;
+        }
+    }
 }

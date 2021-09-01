@@ -15,7 +15,7 @@ class Category
         // Соединение с БД
         $db = Db::getConnection();
 
-        $categoryList = R::getAll('SELECT id, name FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
+        $categoryList = R::getAll('SELECT id, name, parent FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
 
         return $categoryList;
     }
@@ -30,7 +30,7 @@ class Category
         // Соединение с БД
         $db = Db::getConnection();
 
-        $categoryList = R::getAll('SELECT id, name, sort_order, status FROM category ORDER BY sort_order ASC');
+        $categoryList = R::getAll('SELECT id, name, sort_order, parent, status FROM category ORDER BY sort_order ASC');
 
         return $categoryList;
     }
@@ -58,7 +58,7 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateCategoryById($id, $name, $sortOrder, $status)
+    public static function updateCategoryById($id, $name, $sortOrder, $parent, $status)
     {
         // Соединение с БД
         $db = Db::getConnection();
@@ -66,7 +66,7 @@ class Category
         $category = Category::getCategoryById($id);
 
         mapAssoc(
-            ['name' => $name, 'sort_order' => $sort_order, 'status' => $status],
+            ['name' => $name, 'sort_order' => $sortOrder, 'parent' => $parent, 'status' => $status],
             function($col_name, $value, $category){$category->$col_name = $value;},
             $category);
 
@@ -114,7 +114,7 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат добавления записи в таблицу</p>
      */
-    public static function createCategory($name, $sortOrder, $status)
+    public static function createCategory($name, $sortOrder, $parent, $status)
     {
         // Соединение с БД
         $db = Db::getConnection();
@@ -123,7 +123,7 @@ class Category
         $category = R::dispense('category');
 
         mapAssoc(
-            ['name' => $name, 'sort_order' => $sort_order, 'status' => $status], 
+            ['name' => $name, 'sort_order' => $sortOrder, 'parent' => $parent, 'status' => $status], 
             function($col_name, $value, $category){$category->$col_name = $value;}, 
             $category);
 

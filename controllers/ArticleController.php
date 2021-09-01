@@ -17,10 +17,10 @@ class ArticleController
         $categories = Category::getCategoriesList();
 
         // Получаем инфомрацию о статье
-        $product = Article::getArticlesById($articleId);
+        $article = Article::getArticleById($articleId);
 
         // Подключаем вид
-        require_once(ROOT . '/views/product/view.php');
+        require_once(ROOT . '/views/article/view.php');
         return true;
     }
 

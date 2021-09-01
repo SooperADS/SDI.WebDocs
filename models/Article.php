@@ -20,7 +20,7 @@ class Article
         // Соединение с БД
         $db = Db::getConnection();
 
-        $sql = 'SELECT id, title, description, is_hot FROM articles '
+        $sql = 'SELECT id, title, description FROM articles '
         . 'WHERE status = "1" ORDER BY id DESC LIMIT ?';
 
         $articles = R::getAll($sql, [$count]);
@@ -43,7 +43,7 @@ class Article
         // Смещение (для запроса)
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-        $sql = 'SELECT id, title, description, is_hot FROM articles '
+        $sql = 'SELECT id, title, description FROM articles '
         . 'WHERE `status` = 1 AND `category_id` = :category_id '
         . 'ORDER BY `id` ASC LIMIT :limit OFFSET :offset';
 
@@ -118,7 +118,7 @@ class Article
         // Соединение с БД
         $db = Db::getConnection();
 
-        $articles = R::getAll('SELECT id, title, author, post_date FROM articles ORDER BY id ASC');
+        $articles = R::getAll('SELECT * FROM articles ORDER BY id ASC');
 
         return $articles;
     }
@@ -191,10 +191,10 @@ class Article
     public static function getImage($id)
     {
         // Название изображения-пустышки
-        $noImage = '$no-image.jpg';
+        $noImage = 'no-image.jpg';
 
         // Путь к папке со статьями
-        $imgpath = '/upload/images';
+        $imgpath = '/upload/images/';
         $path = $imgpath . 'articles/';
 
         // Путь к изображению товара

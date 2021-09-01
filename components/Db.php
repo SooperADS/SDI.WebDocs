@@ -23,7 +23,7 @@ class Db
             $result = R::setup($dsn, $params['user'], $params['password']);
             self::$is_connected = 1;
 
-            R::fancyDebug( TRUE );
+            //R::fancyDebug( TRUE );
         }     
     }
 }

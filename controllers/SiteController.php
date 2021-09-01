@@ -15,10 +15,10 @@ class SiteController
         $categories = Category::getCategoriesList();
 
         // Список последних статей
-        $latestProducts = Article::getLatestArticles(6);
+        $latestArticles = Article::getLatestArticles(6);
 
         // Список статей для слайдера
-        $sliderProducts = Article::getRecommendedArticles();
+        $sliderArticles = Article::getRecommendedArticles();
 
         // Подключаем вид
         require_once(ROOT . '/views/site/index.php');

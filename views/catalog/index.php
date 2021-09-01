@@ -31,21 +31,18 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?php echo Article::getImage($product['id']); ?>" alt="" />
-                                        <h2>$<?php echo $article['price'];?></h2>
+                                        <img src="<?php echo Article::getImage($article['id']); ?>" alt="" />
                                         <p>
-                                            <a href="/product/<?php echo $product['id'];?>">
-                                                <?php echo $article['title'];?>
+                                            <a href="/article/<?php echo $article['id']; ?>">
+                                                <?php echo $article['title']; ?>
                                             </a>
                                         </p>
                                     </div>
-                                    <?php if ($article['is_hot']): ?>
-                                        <img src="/template/images/home/hot.png" class="new" alt="" />
-                                    <?php endif; ?>
+                                    
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach;?>                   
+                    <?php endforeach; ?>         
 
                 </div><!--features_items-->
 

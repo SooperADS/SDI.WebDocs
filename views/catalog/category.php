@@ -34,20 +34,17 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?php echo Article::getImage($article['id']); ?>" alt="" />
-                                        <h2>$<?php echo $article['price']; ?></h2>
                                         <p>
-                                            <a href="/article/<?php echo $product['id']; ?>">
+                                            <a href="/article/<?php echo $article['id']; ?>">
                                                 <?php echo $article['title']; ?>
                                             </a>
                                         </p>
                                     </div>
-                                    <?php if ($product['is_hot']): ?>
-                                        <img src="/template/images/home/new.png" class="new" alt="" />
-                                    <?php endif; ?>
+                                    
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>                              
+                    <?php endforeach; ?>
 
                 </div><!--features_items-->
                 
