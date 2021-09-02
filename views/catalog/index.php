@@ -17,6 +17,22 @@
                                     </h4>
                                 </div>
                             </div>
+                            <?php if (!empty($categoryItem['children'])):
+                                foreach ($categoryItem['children'] as $child):
+                                    ?>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="/category/<?php echo $child['id'];?>">
+                                                --<?php echo $child['name'];?>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                                
+                            
                         <?php endforeach; ?>
                     </div>
                 </div>

@@ -35,10 +35,14 @@
                                 <option value="-1">[В корневом разделе]</option>
                                 <?php foreach ($categoriesList as $category): ?>
                                     <?php if ($category['id'] != $id): ?>
-                                    <option value="<?php echo $category['id']; ?>" 
-                                        >
-                                        <?php echo $category['name']; ?>
-                                    </option>
+                                        <option value="<?php echo $category['id']; ?>"
+                                            <?php $firstCategoryId = $categoriesList[0]['id'];// id первой категории в массиве
+                                            $currentCategoryId = $id - $firstCategoryId;// Если id категорий начинаются не с 0
+                                            if ($categoriesList[$currentCategoryId]['parent'] == $category['id']) { //проверка на указанный родительский элемент
+                                                echo "selected";
+                                            } ?>>
+                                            <?php echo $category['name']; ?>
+                                        </option>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>

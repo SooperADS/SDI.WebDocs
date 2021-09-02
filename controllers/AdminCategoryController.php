@@ -17,7 +17,6 @@ class AdminCategoryController extends AdminBase
 
         // Получаем список категорий
         $categoriesList = Category::getCategoriesListAdmin();
-
         // Подключаем вид
         require_once(ROOT . '/views/admin_category/index.php');
         return true;
@@ -86,6 +85,7 @@ class AdminCategoryController extends AdminBase
             // Получаем данные из формы
             $name = $_POST['name'];
             $sortOrder = $_POST['sort_order'];
+            $parent = $_POST['parent'];
             $status = $_POST['status'];
 
             // Сохраняем изменения

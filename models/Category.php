@@ -15,7 +15,7 @@ class Category
         // Соединение с БД
         $db = Db::getConnection();
 
-        $categoryList = R::getAll('SELECT id, name, parent FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
+        $categoryList = R::getAll('SELECT id, name, parent FROM category WHERE status = "1"');
 
         return $categoryList;
     }
