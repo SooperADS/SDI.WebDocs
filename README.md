@@ -12,6 +12,8 @@ This Markdown cheat sheet provides a quick overview of all the Markdown syntax e
 - [ ] Переделать шаблон интернет магазина в новый шаблон 
 - [ ] Реализовать уровни доступа при создании статей
 
+- [ ] ЗАКОНЧИТЬ ВЁРСТКУ
+
 ## Переменные enviroment
 
 - `$_SESSION['user']` - Идентификатор авторизированного пользователя
@@ -23,7 +25,7 @@ This Markdown cheat sheet provides a quick overview of all the Markdown syntax e
 
 lorem ipsum.....
 
-### User Roles
+### User Roles ([!] КОСТЫЛЬ [!])
 
 10. `Владелец` -> `root`
 9. `Разработчик` -> `developer`
