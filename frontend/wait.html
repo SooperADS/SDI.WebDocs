@@ -1,0 +1,49 @@
+<head>
+	<title>SDI :(</title>
+	<link id="page-icon" rel="icon" href="./img/icons/logo.png" />
+	<link rel="stylesheet" href="./css/Pages/Error.css">
+</head>
+
+<style>
+	span {
+		user-select: none;
+		letter-spacing: -0.125ch;
+		font-size: 0.75em;
+		color: #464646;
+	}
+
+	span>s {
+		color: #FF8989;
+		text-decoration: none;
+	}
+</style>
+
+<body>
+	<div>
+		<h1>Подождите <span id="points">...</span></h1>
+	</div>
+</body>
+
+<script>
+	let points = document.getElementById("points")
+	const text = [
+		"<s>...</s>",
+		".<s>..</s>",
+		"..<s>.</s>",
+		"...       ",
+		"<s>.</s>..",
+		"<s>..</s>.",
+	]
+
+	function getState(it) {
+		return text[it % text.length]
+	}
+
+	let i = -1
+	const itt = () => {
+		i++
+		points.innerHTML = getState(i)
+	}
+	setInterval(itt, 250)
+	itt()
+</script>
