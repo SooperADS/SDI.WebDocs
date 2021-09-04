@@ -276,6 +276,12 @@ var SDI;
         redirect(node) {
             this.node = node;
         }
+        refresh() {
+            this.node.refresh();
+        }
+        refreshAll() {
+            this.root.refresh();
+        }
         isValid() {
             return this.node != null;
         }
@@ -358,6 +364,9 @@ window.addEventListener("wheel", event => {
     let isVertical = event.deltaY != 0;
     let target = event.target;
     let node = SDI.elementSrollNode(target);
+    if (!node) {
+        throw new Error("Damage to the scroll tree");
+    }
     let element = node.setElement;
     if (!element) {
         console.error("Incorect scroll tree: ", node);
@@ -393,4 +402,7 @@ window.addEventListener("wheel", event => {
         }
     }
 }, { passive: false });
+window.addEventListener("load", () => {
+    SDI.scrollTree.root().refresh();
+});
 //# sourceMappingURL=Scrol.js.map

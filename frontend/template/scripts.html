@@ -1,0 +1,29 @@
+<div>
+	<script src="./scripts/js/Scrol.js">
+	</script>
+	<script src="./scripts/js/Entity/Project.js">
+	</script>
+	<script src="./scripts/js/Tag/Button.js">
+	</script>
+	<script src="./scripts/js/Tag/Scroler.js">
+	</script>
+	<script src="./scripts/js/Tag/Popup.js">
+	</script>
+	<script src="./scripts/js/Tag/Form.js">
+	</script>
+
+	<script>
+		let evryonce = document.querySelectorAll(
+			"*:not(body):not(html):not([hidden])"
+		)
+		evryonce.forEach(e => {
+			e.setAttribute("hidden", "")
+		})
+
+		setTimeout(() => {
+			evryonce.forEach(e => {
+				e.removeAttribute("hidden")
+			})
+		}, 1)
+	</script>
+</div>

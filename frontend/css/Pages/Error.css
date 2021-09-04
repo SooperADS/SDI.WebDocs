@@ -1,5 +1,5 @@
-@import url("/./css/Reset.css");
-@import url("/./css/Base.css");
+@import url("../css/Reset.css");
+@import url("../css/Base.css");
 
 h1 {
 	font-size: 105px;

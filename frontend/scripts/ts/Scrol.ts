@@ -298,6 +298,12 @@ namespace SDI {
 		redirect(node: ScrollStateNode): void {
 			this.node = node
 		}
+		refresh(): void {
+			this.node.refresh()
+		}
+		refreshAll(): void {
+			this.root.refresh()
+		}
 
 		constructor(element: Element) {
 			if (element != undefined) {
@@ -417,6 +423,10 @@ window.addEventListener("wheel", event => {
 
 	let target = event.target as Element
 	let node = SDI.elementSrollNode(target)
+	if (!node) {
+		throw new Error("Damage to the scroll tree");
+	}
+
 	let element = node.setElement
 
 	if (!element) {
@@ -456,3 +466,7 @@ window.addEventListener("wheel", event => {
 		}
 	}
 }, { passive: false })
+
+window.addEventListener("load", () => {
+	SDI.scrollTree.root().refresh()
+})

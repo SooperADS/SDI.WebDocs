@@ -1,0 +1,73 @@
+<div id="-menu">
+	<nav font-support="sdi-icon" id="-menu__content">
+		<div id="-menu__left">
+			<button class="root" ref="/./">
+				<img src="./img/icons/logo.png"> SDI
+			</button>
+		</div>
+		<div id="-menu__right" use-lock>
+			<div class="button-group" hidden no-fixed id="-menu__accaunt">
+				<button group>
+					Акаунт
+				</button>
+				<button hidden ref="./profile">
+					Профель
+				</button>
+				<button hidden ref="./my" id="-menu__my">
+					Участие
+				</button>
+				<button hidden class="log-io" ref="./logout">
+					Выйти
+				</button>
+			</div>
+			<button class="log-io" ref="./login" id="-menu__login">
+				Войти
+			</button>
+			<div class="button-group" id="-menu__projects" no-fixed>
+				<button group>
+					Проекты
+				</button>
+				<button ref="./projects">
+					Все
+				</button>
+				<div class="button-group" sub reverse-arrow>
+					<button group title="Документация">
+						Docs
+					</button>
+					<div class="sub" direct="left" id="-menu__docs">
+						<button ref="./docs">
+							Все
+						</button>
+					</div>
+				</div>
+				<div class="button-group" sub reverse-arrow>
+					<button group>
+						Задачи
+					</button>
+					<div class="sub" direct="left" id="-menu__task">
+						<button ref="./tasks">
+							Все
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="button-group" hidden no-fixed id="-menu__acp">
+				<button group title="Admin Control Panal">
+					ACP
+				</button>
+				<button ref="./reg" id="-menu__registr">
+					Регистрация
+				</button>
+				<button ref="./acp-projects" id="-menu__acp-projects">
+					Проекты
+				</button>
+				<button ref="./acp-tesks" id="-menu__acp-task">
+					Задачи
+				</button>
+				<button ref="./users" id="-menu__acp-accounts">
+					Аккаунты
+				</button>
+			</div>
+		</div>
+	</nav>
+</div>

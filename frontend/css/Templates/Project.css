@@ -2,7 +2,7 @@
 	display: -ms-grid !important;
 	display: grid !important;
 
-	grid-template-columns: auto auto;
+	grid-template-columns: 1fr 8fr;
 	grid-template-rows: auto auto;
 	grid-template-areas: 
 		"img header" 
@@ -73,4 +73,11 @@
 }
 .project>.project__buttons>button.github:hover {
 	background-color: #005f778b !important;
+}
+
+#-project-buttons {
+	display: flex;
+}
+#-project__all {
+	margin-left: 20px;
 }
