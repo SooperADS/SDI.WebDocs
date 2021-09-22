@@ -15,18 +15,6 @@ class CatalogController
         // Список категорий для левого меню
         $categories = Category::getCategoriesList();
 
-        $firstCategoryId = $categories[0]['id'];// Если в таблице категории по ИД начинаются не с нуля а с 1 например
-        for ($i=0; $i < count($categories); $i++) { 
-            $category = $categories[$i];
-            if ($category['parent'] != '-1') {          
-                $categories[$category['parent'] - $firstCategoryId]['children'][] = $category;
-                $toDelete[] = $i;
-            }
-        }
-        for ($i=0; $i < count($toDelete); $i++) { 
-            unset($categories[$toDelete[$i]]);
-        }
-
         // Список последних статей
         $latestArticles = Article::getLatestArticles(12);
 

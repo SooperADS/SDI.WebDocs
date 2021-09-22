@@ -1,12 +1,11 @@
-<style type="text/css">
-    .adm-art-content
-    {
-        width: 100%;
-        height: 50%;
-    }
-</style>
-
 <?php
+// <style type="text/css">
+//     .adm-art-content
+//     {
+//         width: 100%;
+//         height: 50%;
+//     }
+// </style>
 
 // FRONT CONTROLLER
 

@@ -17,7 +17,58 @@ class Category
 
         $categoryList = R::getAll('SELECT id, name, parent FROM category WHERE status = "1"');
 
-        return $categoryList;
+        $categoryes = array();
+        $resultArray = Category::composeCategoriesList($categoryList);
+
+        $GLOBALS['categoryList'] = $resultArray['result'];
+        $categoryes = Category::fetchCategoriesList($resultArray);
+        print_r($GLOBALS['categoryList']);
+        die();
+        return $categoryes;
+    }
+
+    public static function fetchCategoriesList($resultArray)
+    {
+        $resultArray['ote'] = array_values($resultArray['ote']);
+        for ($i=0; $i < count($resultArray['ote']); $i++) { 
+            for ($j=0; $j < count($resultArray['result']); $j++) { 
+                if ($resultArray['ote'][$i]['parent'] == $resultArray['result'][$j]['id']) {
+                    $GLOBALS['categoryList'][$j]['children'][] = $resultArray['ote'][$i];
+                }
+                else{
+                    if (!empty($resultArray['result'][$j]['children'])) {
+                        Category::fetchCategoriesList(array('ote' => $resultArray['ote'], 'result' => $resultArray['result'][$j]['children']));
+                    }
+                }
+            }
+        }
+    }
+
+    public static function composeCategoriesList($categoryList)
+    {
+        $categoryes = array();
+
+        for ($i=0; $i < count($categoryList); $i++) { 
+            if ($categoryList[$i]['parent'] == '-1') {
+                $categoryes[] = $categoryList[$i];
+            }
+            else{
+                $otherElements[] = $categoryList[$i];
+            }
+        }
+
+        for ($i=0; $i < count($otherElements); $i++) { 
+            $ote[$otherElements[$i]['id']] = $otherElements[$i];// Элементы которые впоследствии будут Ребёнком в Ребёнке 
+        }
+        for ($i=0; $i < count($categoryes); $i++) { 
+            for ($j=0; $j < count($otherElements); $j++) { 
+                if ($categoryes[$i]['id'] == $otherElements[$j]['parent']) {
+                    $categoryes[$i]['children'][] = $otherElements[$j];
+                    unset($ote[$otherElements[$j]['id']]);
+                }
+            }
+        }
+        return array('result' => $categoryes, 'ote' => $ote);
     }
 
     /**

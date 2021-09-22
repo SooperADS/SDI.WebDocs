@@ -1,14 +1,11 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Каталог</h2>
-                    <div class="panel-group category-products">
-                        <?php foreach ($categories as $categoryItem): ?>
-                            <div class="panel panel-default">
+<?php
+$GLOBALS["level"] = 0;
+function fetchCategory($categoryItem)
+{
+    if ($categoryItem['parent'] == '-1') {
+        ?>
+        <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a href="/category/<?php echo $categoryItem['id'];?>">
@@ -17,22 +14,39 @@
                                     </h4>
                                 </div>
                             </div>
-                            <?php if (!empty($categoryItem['children'])):
-                                foreach ($categoryItem['children'] as $child):
-                                    ?>
-                                <div class="panel panel-default">
+        <?php
+    }
+    else{
+        ?>
+        <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a href="/category/<?php echo $child['id'];?>">
-                                                --<?php echo $child['name'];?>
+                                            <a href="/category/<?php echo $categoryItem['id'];?>">
+                                                --<?php echo $GLOBALS['level'].$categoryItem['name'];?>
                                             </a>
                                         </h4>
                                     </div>
                                 </div>
-                            <?php endforeach;?>
-                        <?php endif;?>
-                                
-                            
+        <?php
+    }
+    if (!empty($categoryItem['children'])) {
+        $GLOBALS["level"] = $GLOBALS["level"]+1;
+        for ($i=0; $i < count($categoryItem['children']); $i++) { 
+            fetchCategory($categoryItem['children'][$i]);
+        }
+        $GLOBALS["level"] = 0;
+    }
+}
+?>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Каталог</h2>
+                    <div class="panel-group category-products">
+                        <?php foreach ($categories as $categoryItem): ?>
+                            <?php fetchCategory($categoryItem); ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
